@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>wecome to shortUrl project</h1>
+    <h3>Enter your Url below</h3>
+    <% if(locals.message){ %>
+        <p style="color: green;">http://localhost:3000/url/<%= locals.message %></p>
+        <% } %>
+        <% if(locals.error){ %>
+        <p style="color: red;"><%= locals.error %></p>
+        <% } %>
+
+    <form action="/url" method="POST">
+        <input type="text" name="url" id="url" placeholder="https://www.example.com">
+        <button type="submit">submit</button>
+    </form>
+
+    <section>
+        <% if (locals.allUrls.length > 0) { %>
+            <h2>All available URLS</h2>
+            <table border>
+                <thead>
+                    <tr>
+                        <th>S.NO</th>
+                        <th>Original URL</th>
+                        <th>Short URL</th>
+                        <th>Visits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% (locals.allUrls).forEach((item,index)=>{ %>
+                        <tr>
+                            <td><%= index+1 %></td>
+                            <td><%= item.url %></td>
+                            <td><a href="<%= item.shortUrl %>"><%= item.shortUrl %></a></td>
+                            <td><%= item.visitHistory.length %></td>
+                        </tr>
+                  <%  }) %>
+                </tbody>
+            </table>
+            <% } %>
+    </section>
+</body>
+</html>
