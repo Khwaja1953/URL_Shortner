@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>welcome please Login</h2>
+    <% if(locals.message){ %>
+        <p style="color: green;">http://localhost:3000/url/<%= locals.message %></p>
+        <% } %>
+        <% if(locals.error){ %>
+        <p style="color: red;"><%= locals.error %></p>
+        <% } %>
+        <form action="/user/login" method="post">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div>
+            <button>Login</button>
+        </div>
+
+    </form>
+    <a href="/signup">Create New Account Here</a>
+</body>
+</html>

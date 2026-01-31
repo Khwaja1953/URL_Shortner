@@ -37,7 +37,7 @@
                         <tr>
                             <td><%= index+1 %></td>
                             <td><%= item.url %></td>
-                            <td><a href="<%= item.shortUrl %>"><%= item.shortUrl %></a></td>
+                            <td><a href="/url/<%= item.shortUrl %>" target="_blank"><%= item.shortUrl %></a></td>
                             <td><%= item.visitHistory.length %></td>
                         </tr>
                   <%  }) %>
