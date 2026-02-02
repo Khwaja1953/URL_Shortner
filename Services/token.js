@@ -1,13 +1,13 @@
 const myDairy = new Map()
 
-const setUser =  (token, email)=>{
-myDairy.set(token,email)
+const setUser =  (token, user)=>{
+myDairy.set(token,user)
 
 }
 
 const getUser =  (token)=>{
-    const email = myDairy.get(token)
-    return email
+    const user = myDairy.get(token)
+    return user
 
 }
 

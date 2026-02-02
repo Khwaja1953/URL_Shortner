@@ -3,20 +3,23 @@ const shortid = require('shortid');
 
 const handleCreateUrl = async (req,res)=>{
     try{
-        const allUrls = await UrlModel.find({})
+        var allUrls = await UrlModel.find({createdBy: req.body.user._id})
+        if(!allUrls){allUrls = null}
         const {url} = req.body;
+       
     if(!url){
         return res.render('home.ejs',{message: null, error: "please enter url",allUrls})
     }
     const existingUrl = await UrlModel.findOne({url});
-    console.log(existingUrl)
+    
 
     if(existingUrl){
         return res.render('home.ejs',{message: existingUrl.shortUrl, error: null, allUrls})
     }
     const shortUrl = shortid.generate();
-    console.log(shortUrl)
-    const savedUrl = await UrlModel.create({url,shortUrl})
+    
+    const savedUrl = await UrlModel.create({url: url,shortUrl: shortUrl,createdBy: req.body.user._id})
+    allUrls = await UrlModel.find({createdBy: req.body.user._id})
 
     return res.render('home.ejs',{message: savedUrl.shortUrl, error: null, allUrls})
     }

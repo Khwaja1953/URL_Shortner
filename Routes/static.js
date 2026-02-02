@@ -6,7 +6,7 @@ const {handleVerifyUser} = require('../Middlewares/auth')
 
 router.get('/',handleVerifyUser,async (req,res)=>{
 
-    const allUrls = await UrlModel.find({})
+    const allUrls = await UrlModel.find({createdBy: req.body.user._id})
     return res.render('home.ejs',{allUrls})
 });
 

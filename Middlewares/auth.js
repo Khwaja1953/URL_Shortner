@@ -6,6 +6,14 @@ const handleVerifyUser = async (req,res,next)=>{
     if (!uuid){
         return res.redirect('login')
     }
+    const user = getUser(uuid);
+    if(!user) return res.redirect('login')
+    req.body = {
+  ...req.body,
+  user: user
+};
+
+    
     next()
 }
 
