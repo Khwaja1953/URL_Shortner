@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser')
 const urlRoute = require('./Routes/url');
 const staticRoute = require('./Routes/static')
 const userRoute = require('./Routes/user')
-const {handleVerifyUser} = require('./Middlewares/auth')
 
 
 
