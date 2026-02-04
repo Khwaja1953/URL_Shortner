@@ -20,5 +20,17 @@ catch(error){
     return res.render('login',{error: error, message: null})
 }
 }
+const restrictTo = (role)=>{
+    return function(req,res,next){
+        if(!req.body.user){
+            return res.redirect('/login')
+        }
+       
+        if (!role.includes(req.body.user.role)){
+            return res.end("unauthorized")
+        }
+        return next()
+    }
 
-module.exports = {handleVerifyUser}
+}
+module.exports = {handleVerifyUser, restrictTo}

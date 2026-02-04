@@ -1,6 +1,6 @@
 const User = require('../Models/UserModel');
 const {setUser, getUser} = require('../Services/token')
-const {v4: uuidv4} = require('uuid')
+// const {v4: uuidv4} = require('uuid')
 
 
 //singup handle

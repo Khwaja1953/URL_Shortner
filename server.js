@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const urlRoute = require('./Routes/url');
 const staticRoute = require('./Routes/static')
 const userRoute = require('./Routes/user')
+const { handleVerifyUser } = require('./Middlewares/auth');
 
 
 
@@ -25,6 +26,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.set('view engine','ejs')
 app.use(cookieParser())
+
+//check authentication
+app.use(handleVerifyUser)
 
 //my routes 
 app.use('/',staticRoute);

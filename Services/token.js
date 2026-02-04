@@ -5,7 +5,8 @@ const setUser =  (user)=>{
 // myDairy.set(token,user)
 return jwt.sign({_id: user._id,
     email: user.email,
-    name: user.name
+    name: user.name,
+    role: user.role
 },secretKey,{ expiresIn: '1d' })
 
 }
