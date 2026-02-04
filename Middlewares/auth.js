@@ -17,7 +17,7 @@ const handleVerifyUser = async (req,res,next)=>{
     next()
 }
 catch(error){
-    return res.render('login',{error: error, message: null})
+    return res.render('login',{error: "please login first", message: null})
 }
 }
 const restrictTo = (role)=>{
