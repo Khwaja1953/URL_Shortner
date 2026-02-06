@@ -3,7 +3,8 @@ const userSchema = mongoose.Schema({
     name: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    role: {type: String, default: "NORMAL", enum: ["ADMIN","NORMAL"]}
+    role: {type: String, default: "NORMAL", enum: ["ADMIN","NORMAL"]},
+    profile: {type: String}
     
 },{timestamps: true});
 const User = mongoose.model("User",userSchema)

@@ -22,4 +22,7 @@ router.get('/login',(req,res)=>{
 router.get('/signup',(req,res)=>{
     return res.render('signup',{error: null,message:null})
 })
+
+
+
 module.exports = router

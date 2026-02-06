@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>wecome to shortUrl project</h1>
+    <div style="display: flex; justify-content: space-between;">
+        <h1>wecome to shortUrl project</h1>
+        <a href="/user/profile">profile</a>
+    </div>
     <h3>Enter your Url below</h3>
     <% if(locals.message){ %>
         <p style="color: green;">http://localhost:3000/url/<%= locals.message %></p>

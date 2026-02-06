@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./Utils/dbConnection');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const path = require('path');
 
 
 // importing routes 
@@ -32,6 +33,8 @@ app.use(cookieParser())
 app.use('/',staticRoute);
 app.use('/url',urlRoute);
 app.use('/user',userRoute);
+app.use("/ProfilePhotos",express.static(path.join(__dirname,'ProfilePhotos')));
+
 
 app.listen(PORT,()=>{
     console.log(`server is running at localhost:${PORT}`)

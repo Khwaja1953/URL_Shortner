@@ -7,9 +7,10 @@ const {setUser, getUser} = require('../Services/token')
 const handleSignup = async (req, res)=>{
     try{
         const {name, email, password} = req.body;
+        const {filename} = req.file;
         const user = await User.findOne({email});
         if(user) return res.render('login',{error:"account already exists",message:null})
-        const newUser = await User.create({name,email,password});
+        const newUser = await User.create({name,email,password,profile:filename});
         return res.render('login',{error: null,message:"account created successfully please login"});
 
 
@@ -41,6 +42,17 @@ const handleLogin = async (req,res)=>{
 
 }
 
+const handleProfile = async (req, res)=>{
+    try{
+        const {email} = req.body.user;
+        const user = await User.findOne({email});
+        return res.render('profile.ejs',{name: user.name, email: user.email, role: user.role, profile: user.profile, error: null})
+
+    }
+    catch(error){
+        return res.render('profile.ejs',{name: null, email: null, role: null, profile: null, error: error})
+    }
+}
 
 
-module.exports = {handleSignup, handleLogin}
+module.exports = {handleSignup, handleLogin, handleProfile}
