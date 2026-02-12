@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./Utils/dbConnection');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+require('dotenv').config()
 
 
 // importing routes 
@@ -14,10 +15,10 @@ const userRoute = require('./Routes/user')
 
 const ejs = require('ejs');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
 //mongodb connection
-connectDB('mongodb://localhost:27017/urlProject')
+connectDB(process.env.MONGO_URL)
 .then(()=>{console.log("mongodb connected successfully")})
 .catch(error => {console.log(error)})
 

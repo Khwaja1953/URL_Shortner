@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const {handleSignup, handleLogin, handleProfile} = require('../Controllers/userController')
+const {handleSignup, handleLogin, handleProfile, handleVerifyOtp} = require('../Controllers/userController')
 const {handleVerifyUser} = require('../Middlewares/auth')
 const router = express.Router();
 const storage = multer.diskStorage({
@@ -17,5 +17,6 @@ const upload = multer({ storage: storage })
 router.post('/signup',upload.single('profile'),handleSignup);
 router.post('/login',handleLogin)
 router.get('/profile',handleVerifyUser,handleProfile)
+router.post('/verifyOtp',handleVerifyOtp)
 
 module.exports = router

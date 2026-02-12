@@ -1,6 +1,6 @@
 // const myDairy = new Map()
 const jwt = require('jsonwebtoken')
-const secretKey = "ilssrinagar123"
+const secretKey = process.env.SECRET_KEY
 const setUser =  (user)=>{
 // myDairy.set(token,user)
 return jwt.sign({_id: user._id,

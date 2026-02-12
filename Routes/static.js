@@ -22,6 +22,9 @@ router.get('/login',(req,res)=>{
 router.get('/signup',(req,res)=>{
     return res.render('signup',{error: null,message:null})
 })
+router.get('/verifyOtp',(req,res)=>{
+    return res.render('verifyOtp',{error: null,email: null})
+})
 
 
 

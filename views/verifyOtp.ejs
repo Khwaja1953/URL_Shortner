@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Please Enter your OTP Below for your <%= locals.email %></h1>
+    <p style="color: red;"><%= locals.error %></p>
+    <form action="/user/verifyOtp" method="post">
+        <div hidden>
+            <input type="email" name="email" id="" value="<%= locals.email %>">
+        </div>
+        <div>
+            <label for="OTP">OTP:</label>
+            <input type="number" name="otp" id="OTP">
+        </div>
+        <div>
+            <button type="submit">Verify</button>
+        </div>
+    </form>
+</body>
+</html>
